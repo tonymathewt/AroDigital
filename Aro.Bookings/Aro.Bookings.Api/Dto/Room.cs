@@ -11,5 +11,7 @@
         public int Price { get; set; }
 
         public int Size { get; set; }
+
+        public List<string> Choices { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Aro.Bookings.Service.Services
         {
             var hotelRooms = await _hotelRoomRepository.GetWhere(x => x.HotelId.Equals(hotelId),
                 s=>s,
-                new string[] { "Hotel", "Room", "Room.RoomType", "Room.RoomType.Features", "Room.RoomType.Beds" });
+                new string[] { "Hotel", "Room", "Room.RoomType", "Room.RoomType.Features", "Room.RoomType.Features.Feature", "Room.RoomType.Beds" });
             return hotelRooms;
         }
     }

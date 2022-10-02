@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Constants } from 'src/app/common/constants';
 import { FeatureSelect } from 'src/app/models/feature-select.model';
 import { Hotel } from 'src/app/models/hotel.model';
 import { IFeatureSelected, ISearchHotelRequest } from 'src/app/requests/search-hotel-request';
@@ -48,12 +49,16 @@ export class BookingsComponent implements OnInit {
     this.hotelService.getHotelsFeatures().subscribe((result: FeatureSelect[]) => {
       this.features = result;
     });
+
+    window.localStorage.setItem("searchRequest", JSON.stringify(this.request));
   }
 
   searchHotels(e: ISearchHotelRequest) {
     this.hotelService.getSearchedHotels(this.request).subscribe((result: Hotel[]) => {
       this.hotelList = result;
     });
+
+    window.localStorage.setItem(Constants.searchRequest, JSON.stringify(this.request));
   }
 
   // opens the popup/editor to show filter

@@ -12,8 +12,8 @@ export interface IFeatureSelected{
 export interface ISearchHotelRequest{
 
     location: string | undefined;
-    checkInDate: Date | undefined;
-    checkOutDate: Date | undefined;
+    checkInDate: Date;
+    checkOutDate: Date;
     paginatedParam : IPaginatedParam;
     sortColumn: string;
     sortOrder: number;

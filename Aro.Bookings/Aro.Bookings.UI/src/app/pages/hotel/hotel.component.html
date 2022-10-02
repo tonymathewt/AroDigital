@@ -1,8 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="hotel-header">
     <div>
       <h5>{{hotelDetail.name}}</h5>
-    </div>
+      <small>{{hotelDetail.address}}</small>
+    </div>  
   </div>
 
   <div class="row" style="text-align: center">
@@ -51,6 +52,25 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-12">
+      <div class="panel panel-default border">
+        <div class="panel-body" style="vertical-align:auto;">
+          <h6>Facilities</h6>
+            <div class="facility-item" *ngFor="let facility of hotelDetail.features">
+              <span [ngSwitch]="facility.name">
+                <span class="material-symbols-outlined" *ngSwitchCase="'50 m from city center'">near_me</span>
+                <span class="material-symbols-outlined" *ngSwitchCase="'500 m from city center'">near_me</span>
+                <span class="material-symbols-outlined" *ngSwitchCase="'Travel Sustainable Property'">travel_explore</span>
+                <span class="material-symbols-outlined" *ngSwitchCase="'Managed by a private host'">double_arrow</span>
+                {{facility.name}}
+              </span>              
+            </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+
   <div class="row" *ngFor="let room of hotelDetail.rooms">
     <div class="col-12">
       <div class="panel panel-default border">
@@ -69,14 +89,32 @@
           </div>
 
           <div>
-            <span class="border border-primary feature-item">
-              <span class="material-symbols-outlined">star</span> Item 1
-            </span>
-            <span class="border border-primary feature-item">
-              <span class="material-symbols-outlined">star</span> Item 2
+            <span class="border border-primary feature-item" *ngFor="let feature of room.roomType?.features">
+              <span class="material-symbols-outlined">star</span> {{feature}}
             </span>
           </div>
 
+          <div *ngFor="let choice of room.choices">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green" class="bi bi-check" viewBox="0 0 20 20">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+            <span class="room-choice">{{choice}}</span>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              Price for {{getDateDiff(request.checkInDate, request.checkOutDate)}} night(s):
+            </div>            
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <span class="price-detail">
+                <h3>
+                <strong>€ {{getNightsPrice(request.checkInDate, request.checkOutDate, room.price)}}</strong>
+              </h3>
+              </span>
+            </div>            
+          </div>
         </div>
       </div>
     </div>

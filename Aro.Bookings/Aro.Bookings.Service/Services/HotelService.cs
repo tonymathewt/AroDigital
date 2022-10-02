@@ -35,20 +35,20 @@ namespace Aro.Bookings.Service.Services
 
             // Apply the search/filter first
             var selectedFeatureIds = searchHotel.Features.Select(f => f.Id).ToList();
-            var searchedHotelIds = (from hot in _dbContext.Hotel
+            var searchedHotelQuery = (from hot in _dbContext.Hotel
                                     join hotFea in _dbContext.HotelFeature on hot.Id equals hotFea.HotelId
                                     where hot.Location == searchHotel.Location
                                         && (selectedFeatureIds.Count() <= 0 ||
                                             selectedFeatureIds.Any(x => hotFea.FeatureId.Equals(x)))
-                                    select hot.Id).ToList();
-
-            var hotels = (await _hotelRepository.GetWhere(x => searchedHotelIds.Contains(x.Id))).ToList();
+                                    select hot.Id);
 
             // Apply paging
-            var hotelsInCurrentPage = hotels.Skip(searchHotel.PaginatedParam.PageSize * (searchHotel.PaginatedParam.PageNumber - 1))
+            var searchedHotelIds = searchedHotelQuery.Skip(searchHotel.PaginatedParam.PageSize * (searchHotel.PaginatedParam.PageNumber - 1))
                 .Take(searchHotel.PaginatedParam.PageSize);
 
-            PopulateEntities(hotelsInCurrentPage); // Derrive the child entities
+            var hotels = (await _hotelRepository.GetWhere(x => searchedHotelIds.Contains(x.Id))).ToList();      
+
+            PopulateEntities(hotels); // Derrive the child entities
             var paginatedHotels = new PaginatedModel<Hotel>(hotels, searchedHotelIds.Count());
             return paginatedHotels;
         }
@@ -178,7 +178,24 @@ namespace Aro.Bookings.Service.Services
                                       TotalAvailable = room.TotalAvailable
                                   }
                               }).ToList();
+
             var roomTypeIds = hotelRooms.Select(x => x.Room.RoomTypeId).ToList();
+
+            var roomTypeFeatures = from roomFea in _dbContext.RoomTypeFeature
+                           join fea in _dbContext.Feature on roomFea.FeatureId equals fea.Id
+                           where roomTypeIds.Contains(roomFea.RoomTypeId)
+                           select new RoomTypeFeatures
+                           {
+                               Feature = fea,
+                               FeatureId = fea.Id,
+                               Id = roomFea.Id,
+                               RoomTypeId = roomFea.RoomTypeId
+                           };
+
+            foreach(var roomType in hotelRooms.Select(x => x.Room.RoomType))
+            {
+                roomType.Features = roomTypeFeatures.Where(x => x.RoomTypeId.Equals(roomType.Id)).ToList();
+            }
 
             var roomTypeBeds = from rt in _dbContext.RoomType
                                join rtb in _dbContext.RoomTypeBed on rt.Id equals rtb.RoomTypeId

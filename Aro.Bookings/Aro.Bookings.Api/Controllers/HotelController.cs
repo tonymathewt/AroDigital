@@ -75,7 +75,7 @@ namespace Aro.Bookings.Api.Controllers
             {
                 var result = await _hotelService.GetHotelDetails(hotelId);
                 var response = _mapper.Map<HotelDetailResponse>(result);                
-                response.Description = response.Description.Replace("<br>", "");
+                response.Description = response.Description.Replace("<br>", "\n");
 
                 return Ok(response);
             }

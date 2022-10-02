@@ -3,11 +3,13 @@ export class RoomType{
     id: string;
     name: string;
     beds: Bed[];
+    features: string[];
 
     constructor(){
-        this.id = '',
-        this.name = '',
-        this.beds = []
+        this.id = '';
+        this.name = '';
+        this.beds = [];
+        this.features = [];
     }
 }
 

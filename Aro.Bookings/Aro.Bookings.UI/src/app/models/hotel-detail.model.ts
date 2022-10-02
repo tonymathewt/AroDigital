@@ -22,6 +22,7 @@ export class Room{
     childCount: number;
     price: number;
     size: number;
+    choices: string[] | undefined;
 
     constructor(){
         this.adultCount = this.price = this.childCount = this.size = 0;

@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public virtual List<RoomTypeBed> Beds { get; set; }
+
+        public List<string> Features { get; set; }
     }
 }

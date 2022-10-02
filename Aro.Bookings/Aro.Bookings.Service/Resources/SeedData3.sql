@@ -5,7 +5,7 @@
 USE Bookings
 GO
 
-DELETE FROM Feature WHERE [Name] IN ('Travel Sustainable Property', 'Managed by a private host', '50 m from center', '500 m from center')
+DELETE FROM Feature WHERE [Name] IN ('Travel Sustainable Property', 'Managed by a private host', '50 m from city center', '500 m from city center')
 
 DECLARE @Hotel_CharingCross uniqueidentifier,			@Hotel_JurysInnGalway uniqueidentifier,				@Hotel_TheHendrickSmithfieldOpens uniqueidentifier,
 @Hotel_Blooms uniqueidentifier,							@Hotel_DonegalEstuaryHoliday uniqueidentifier,		@Hotel_Flannery uniqueidentifier,
@@ -40,10 +40,10 @@ FROM (VALUES (
 	@Feature_ManagedPrivateHost, 'Managed by a private host', 0, 1
 ),
 (
-	@Feature_50MFromCenter, '50 m from center', 0, 1
+	@Feature_50MFromCenter, '50 m from city center', 0, 1
 ),
 (
-	@Feature_500mFromCenter, '500 m from center', 0, 1
+	@Feature_500mFromCenter, '500 m from city center', 0, 1
 )) AS v(Id, [Name], [Key], HotelFeature)
 
 INSERT INTO HotelFeature(Id, HotelId, FeatureId)

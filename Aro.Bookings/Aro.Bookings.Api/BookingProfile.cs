@@ -17,10 +17,17 @@ namespace Aro.Bookings.Api
                 .ForMember(x => x.Features, x => x.MapFrom(src => src.Features.Select(x => x.Feature)))
                 .ForMember(x => x.Images, x => x.MapFrom(src => src.Images.Select(x => x.Image)));
 
-            CreateMap<Service.Data.Entities.Room, Dto.Room>();
+            CreateMap<Service.Data.Entities.Room, Dto.Room>()
+                .ForMember(x=>x.Choices, x=>x.MapFrom(src=>src.Choices.Select(x=>x.Choice.Name)));
+
             CreateMap<Service.Data.Entities.RoomTypeBed, Dto.RoomTypeBed>();
-            CreateMap<Service.Data.Entities.RoomType, Dto.RoomType>();
-            CreateMap<Service.Data.Entities.Feature, Dto.Feature>();            
+
+            CreateMap<Service.Data.Entities.RoomType, Dto.RoomType>()
+                .ForMember(x => x.Features, x => x.MapFrom(src => src.Features.Select(x => x.Feature.Name)));
+
+            CreateMap<Service.Data.Entities.Feature, Dto.Feature>();
+
+            //CreateMap<Service.Data.Entities.Feature, List<string>>();
         }
     }
 }

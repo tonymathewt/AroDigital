@@ -13,7 +13,8 @@ export class Hotel{
         this.featuredRoomType = { 
             id: '',
             name: '',
-            beds: []
+            beds: [],
+            features: []
          }
     }
 }
