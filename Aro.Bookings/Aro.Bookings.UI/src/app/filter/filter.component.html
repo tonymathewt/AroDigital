@@ -1,0 +1,13 @@
+<div class="col-md-12 col-md-pull-7 filterDiv">
+    <p>Filter by feature</p>
+    <div class="filter-form">
+        
+        <div *ngFor="let feature of features">
+            <input type="checkbox" class="filterChecks" value="{{feature.id}}" [(ngModel)]="feature.selected">
+            <label>{{feature.name}}</label><br>
+        </div>
+        <div>
+            <button class="submit-btn" (click)="filter()">Filter</button>
+        </div>
+    </div>
+</div>

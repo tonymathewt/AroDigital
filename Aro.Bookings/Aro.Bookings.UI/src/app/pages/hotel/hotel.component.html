@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h5>{{hotelDetail.name}}</h5>
+    </div>
+  </div>
+
+  <div class="row" style="text-align: center">
+    <div class="col-12">
+      <div class="card-body mobile-view">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let image of hotelDetail.images; let i =index; let first = first"
+              [ngClass]="{'active': first}">
+              <img class="carousel-image" [src]="image" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-body landscape-view">
+        <div class="row">
+          <div class="col-4" *ngFor="let image of hotelDetail.images; let i =index; let first = first">
+            <img class="landscape-image" [src]="image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="panel panel-default border">
+        <div class="panel-body">
+          <div [ngClass]="{'limitTextHeight': isReadMore}" style="white-space:pre-wrap;">{{hotelDetail.description}}</div>
+          <span (click)="showText()" class="read-more-link">
+            {{ isReadMore ? 'Read More': 'Read Less' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let room of hotelDetail.rooms">
+    <div class="col-12">
+      <div class="panel panel-default border">
+        <div class="panel-body">
+          <h6 class="room-name">{{room.roomType?.name}}</h6>
+          <span>Price for: </span><span *ngFor="let adult of [].constructor(room.adultCount)"
+            class="material-symbols-outlined">person</span>
+          <div *ngFor="let bed of room.roomType?.beds">
+            <div [ngSwitch]="bed.bedTypeName">
+              <span *ngSwitchCase="'Single'" class="material-symbols-outlined">filter_1</span>
+              <span *ngSwitchCase="'Double'" class="material-symbols-outlined">filter_2</span>
+              <span *ngSwitchCase="'Queen'" class="material-symbols-outlined">filter_3</span>
+              <span *ngSwitchCase="'King'" class="material-symbols-outlined">filter_4</span>
+              <span>{{bed.numberOfBeds}} {{bed.bedTypeName}} beds</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="border border-primary feature-item">
+              <span class="material-symbols-outlined">star</span> Item 1
+            </span>
+            <span class="border border-primary feature-item">
+              <span class="material-symbols-outlined">star</span> Item 2
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

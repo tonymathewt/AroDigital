@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px){
+    .card-body .searchDiv .filterDiv{
+        display: none;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .card-body .searchDiv{
+        float: left; 
+        width: 25%;
+    }
+
+    .filterShowDiv{
+        display: none;
+    }
+
+    .contentDiv{
+        float: right;
+        width: 74%;
+    }
+}

@@ -1,0 +1,61 @@
+@media screen and (max-width: 700px){
+    .carousel-image {
+       width: 100%;
+    }
+
+    .landscape-view{
+        display: none;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .carousel-image{
+        max-width: 600px;
+        height: 700px;
+    }
+
+    .mobile-view{
+        display: none;
+    }
+}
+
+.row{
+    margin-right: 5px !important;   // TODO: Need to find out why this is need 
+}
+
+.landscape-image{
+    max-width: 400px;
+    padding-top: 20px;
+}
+
+.col-img{
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}
+
+.row h5{
+    padding-left: 10px;
+}
+
+.limitTextHeight {
+    height: 20px;
+    overflow: hidden;
+}
+
+.read-more-link{
+    color: blue;
+}
+
+.panel{
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.room-name{
+    color: #0071C2;
+}
+
+.feature-item{
+    margin-right: 4px;
+}

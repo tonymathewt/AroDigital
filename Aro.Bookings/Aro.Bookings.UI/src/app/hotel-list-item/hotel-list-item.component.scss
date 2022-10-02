@@ -1,0 +1,66 @@
+@media screen and (max-width: 768px){
+    .hotelImage {
+        max-width: 120px; 
+        max-height: 100px;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .hotelImage{
+        max-width: 200px; 
+        max-height: 150px;
+    }    
+}
+
+.panel-body{
+    width: 100%;
+}
+
+.hotel-details{
+    padding-left: 15px;
+    padding-right: 20px;
+    flex-wrap: wrap;
+}
+
+.hotel-details .hotel-name{
+    word-wrap: break-word;    
+}
+
+.hotel-location{
+    color: green;
+}
+
+.key-features .point{
+    font-size: 12;
+    vertical-align: middle;
+}
+
+.feature:before {
+    color: var(--bui_color_grayscale_light);
+    content: "\b7";
+    display: inline-block;
+    font-weight: 600;
+    padding: 0 5px;
+    text-decoration: none;
+    transform: scale(1.4);
+}
+
+.row{
+    margin-right: 5px! important;
+}
+
+.detail-card{
+    min-height: 150px;
+}
+
+.bed-count{
+    margin-left: 10px;
+}
+
+.hotel-detail-font{
+    font-size: 10pt;
+}
+
+.col-4{
+    padding-left: 0px;
+}

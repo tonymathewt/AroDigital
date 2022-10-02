@@ -1,0 +1,14 @@
+<ng-container *ngIf="!isLoading; else spinner">
+  <div class="wrapper">
+      <app-nav-menu></app-nav-menu>
+      <main class="main">
+          <router-outlet></router-outlet>
+      </main>
+  </div>
+</ng-container>
+<ng-template #spinner>    
+  <div class="page-loading">
+      <span class="spinner"></span>
+      <span class="loader" data-title="Bookings..."></span>
+  </div>
+</ng-template>

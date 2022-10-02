@@ -1,0 +1,42 @@
+<div class="panel panel-default border">
+    <div class="panel-body">
+        <div class="detail-card">
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{hotel.image}}" class="hotelImage" />
+                        </div>
+                        <div class="col-8">
+                            <div><a href="hotel?id={{hotel.id}}"><span class="hotel-name h6">{{hotel.name}}</span></a></div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <span class="material-symbols-outlined">location_on</span>
+                                    <span class="hotel-location h5"><small>{{hotel.location}}</small></span>
+                                    <span class="feature hotel-detail-font" *ngFor="let feature of hotel.keyFeatures">
+                                        <small>{{feature}}</small>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="featured-room">
+                                <span><small><b>{{hotel.featuredRoomType.name}}</b></small></span>
+    
+                                <span class="bed-count hotel-detail-font"
+                                    *ngIf="hotel.featuredRoomType.beds.length > 1">{{hotel.featuredRoomType.beds.length}}
+                                    beds</span>
+                                <span class="bed-count hotel-detail-font">(</span>
+                                <span class="hotel-detail-font"
+                                    *ngFor="let bedType of hotel.featuredRoomType.beds; let i =index; let last = last">{{bedType.numberOfBeds}}
+                                    {{bedType.bedTypeName}}<span class="hotel-detail-font" *ngIf="!last">,</span>
+                                </span>
+                                <span>)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+&nbsp;

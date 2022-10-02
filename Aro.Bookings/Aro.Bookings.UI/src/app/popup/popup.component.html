@@ -1,0 +1,9 @@
+<div class="overlay" *ngIf="popupData?.show">
+
+    <div class="popup" [style.max-width.%]="popupData.size" [style.height.%]="popupData.size">
+        <button class="close" (click)="popToggle()"> &times; </button>
+        <div class="popup-content" [style]="popupData.bodyStyle">
+            <ng-content #popupContent></ng-content>
+        </div>
+    </div>
+</div>

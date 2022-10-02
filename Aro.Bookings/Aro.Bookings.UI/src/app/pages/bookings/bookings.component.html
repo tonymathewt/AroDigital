@@ -1,0 +1,24 @@
+<div class="card-body">
+    <div style="width: 100%;">
+        <div class="searchDiv">
+            <app-search [searchIn]="request" (searchOut)="searchHotels($event)"></app-search>
+            &nbsp;
+            <div class="filterDiv">
+                <app-filter [features]="features"></app-filter>
+            </div>
+            <div class="filterShowDiv">
+                &nbsp;<span (click)="openFeatureFilter()">Filter</span>
+            </div>
+        </div>
+
+        <div class="contentDiv">
+            <app-hotel-list-item *ngFor="let hotel of hotelList" [data]="hotel"></app-hotel-list-item>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+<app-popup [popupData]="filterPop">
+    <app-filter [features]="features" (selectedFeaturesEvent)="filterByFeatures($event)"></app-filter>
+</app-popup>

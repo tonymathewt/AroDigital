@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aro.Bookings.Api", "Aro.Bookings.Api\Aro.Bookings.Api.csproj", "{C6ACC9B7-ED39-4284-BD7B-707275134E8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aro.Bookings.Service", "Aro.Bookings.Service\Aro.Bookings.Service.csproj", "{FC0EA034-23BB-4280-B526-9CA2DC79954B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6ACC9B7-ED39-4284-BD7B-707275134E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6ACC9B7-ED39-4284-BD7B-707275134E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6ACC9B7-ED39-4284-BD7B-707275134E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6ACC9B7-ED39-4284-BD7B-707275134E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0EA034-23BB-4280-B526-9CA2DC79954B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0EA034-23BB-4280-B526-9CA2DC79954B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0EA034-23BB-4280-B526-9CA2DC79954B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0EA034-23BB-4280-B526-9CA2DC79954B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3927D43B-0FA8-49BC-AA98-2812A975A011}
+	EndGlobalSection
+EndGlobal
